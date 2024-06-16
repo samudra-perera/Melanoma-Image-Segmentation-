@@ -17,7 +17,10 @@ class SegmentationDataset(Dataset):
 
     def __getitem__(self, idx):
         img_path = os.path.join(self.image_dir, self.image_names[idx])
-        mask_path = os.path.join(self.mask_dir, self.image_names[idx])
+
+        # Construct the mask filename based on the provided pattern
+        mask_name = self.image_names[idx].replace(".jpg", "_segmentation.png")
+        mask_path = os.path.join(self.mask_dir, mask_name)
 
         image = Image.open(img_path).convert("L")
         mask = Image.open(mask_path).convert("L")
