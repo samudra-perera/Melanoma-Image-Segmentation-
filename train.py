@@ -34,10 +34,10 @@ def main():
         print("Initializing model...")
         model = UNet(in_channels=1, out_channels=1).to(device)
         criterion = nn.BCEWithLogitsLoss()
-        optimizer = optim.Adam(model.parameters(), lr=0.001)
+        optimizer = optim.Adam(model.parameters(), lr=0.01)
 
         # Number of epochs
-        num_epochs = 50
+        num_epochs = 5
 
         # Training loop
         for epoch in range(num_epochs):
